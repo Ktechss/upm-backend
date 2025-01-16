@@ -11,7 +11,12 @@ const contactLogRoutes = require('./routes/contactLogs');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allows all origins. Replace '*' with a specific domain for added security.
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Explicitly define allowed HTTP methods.
+  allowedHeaders: ['Content-Type', 'Authorization'], // Define allowed headers.
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.).
+}));
 app.use(bodyParser.json());
 
 // Routes
